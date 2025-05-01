@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: signed-deployment
+  labels:
+    app: secure-webpage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: secure-webpage
+  template:
+    metadata:
+      labels:
+        app: secure-webpage
+    spec:
+      containers:
+      - name: secure-webpage
+        image: docker.io/tanvika07/secure-webpage:signed
+        ports:
+        - containerPort: 80
